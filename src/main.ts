@@ -1,6 +1,18 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
+import { provideRouter, withInMemoryScrolling, InMemoryScrollingOptions } from '@angular/router';
 import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routes';
 
-bootstrapApplication(AppComponent, appConfig)
+const scrollConfig: InMemoryScrollingOptions = {
+  scrollPositionRestoration: 'enabled',
+  anchorScrolling: 'enabled', // Optional: Enables scrolling to anchors
+};
+
+const inMemoryScrollingFeature = withInMemoryScrolling(scrollConfig);
+
+bootstrapApplication(AppComponent,  {
+  providers: [
+    provideRouter( routes, inMemoryScrollingFeature),
+  ]
+})
   .catch((err) => console.error(err));
