@@ -14,4 +14,8 @@ export class AuthService {
   register(userData: object): Observable<any>{
     return this._HttpClient.post(this.baseURL + 'signup', userData);
   }
+
+  login(userData: object): Observable<any>{
+    return this._HttpClient.post(this.baseURL + 'signin', userData);
+  }
 }

@@ -1,8 +1,8 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormControlOptions, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../../core/services/auth.service.js';
 import { Router } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service.js';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
-export class RegisterComponent {
+export class RegisterComponent{
   constructor(private _AuthService:AuthService, private _Router:Router){}
 
   errMsg: string = '';
