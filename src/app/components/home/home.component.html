@@ -1,3 +1,25 @@
+<section class="py-4 main-slide">
+    <div class="row g-0">
+        <div class="col-md-9">
+            <owl-carousel-o [options]="mainSlideOptions">
+                <ng-template carouselSlide>
+                    <img height="400" src="./assets/images/main-slider-1.jpg" alt="slide1">
+                </ng-template>
+                <ng-template carouselSlide>
+                    <img height="400" src="./assets/images/main-slider-2.jpg" alt="slide2">
+                </ng-template>
+                <ng-template carouselSlide>
+                    <img height="400" src="./assets/images/main-slider-3.jpg" alt="slide3">
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+        <div class="col-md-3">
+            <img height="200" src="./assets/images/main-slider-4.jpg" alt="slide4">
+            <img height="200" src="./assets/images/main-slider-5.jpg" alt="slide5">
+        </div>
+    </div>
+</section>
+
 <section class="py-4" *ngIf="categories.length > 0">
     <h2>Popular Categories</h2>
     <owl-carousel-o [options]="categoriesOptions">

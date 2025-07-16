@@ -64,4 +64,16 @@ export class HomeComponent implements OnInit {
     },
     nav: false
   }
+
+  mainSlideOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: true,
+    navSpeed: 700,
+    navText: ['', ''],
+    items: 1,
+    nav: false
+  }
 }
