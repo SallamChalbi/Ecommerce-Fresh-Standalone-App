@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './core/guard/auth.guard.js';
 
 export const routes: Routes = [
     {
-        path: '', loadComponent: ()=> import('./layouts/blank-layout/blank-layout.component.js').then((m)=> m.BlankLayoutComponent),
+        path: '', canActivate: [authGuard], loadComponent: ()=> import('./layouts/blank-layout/blank-layout.component.js').then((m)=> m.BlankLayoutComponent),
         children: [
             {path: '', redirectTo: 'home', pathMatch: 'full'},
             {path: 'home', loadComponent: ()=> import('./components/home/home.component.js').then((m)=> m.HomeComponent), title: 'Home'},

@@ -1,1 +1,26 @@
-<p>home works!</p>
+<section class="py-4" *ngIf="categories.length > 0">
+    <h2>Popular Categories</h2>
+    <owl-carousel-o [options]="categoriesOptions">
+      <ng-template carouselSlide *ngFor="let category of categories">
+        <img height="300" [src]="category.image" [alt]="category.name" [title]="category.slug">
+        <h3 class="h6 text-main">{{ category.name }}</h3>
+      </ng-template>
+  </owl-carousel-o>
+</section>
+
+<section *ngIf="products.length > 0" class="py-4">
+    <h2>Popular Products</h2>
+    <div class="row g-4">
+        <div *ngFor="let product of products | slice : 0 : 18" class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="product h-100">
+                <img [src]="product.imageCover" [alt]="product.title" [title]="product.title" class="w-100">
+                <h3 class="h6 text-main"> {{product.category.name}} </h3>
+                <h4 class="h6"> {{product.title | cuttext : 3}} </h4>
+                <div class="d-flex justify-content-between align-items-center small">
+                    <span class="">{{product.price | currency : 'E£'}}</span>
+                    <span class="text-muted"><i class="fas fa-star rating-color"></i> {{product.ratingsAverage}} </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
