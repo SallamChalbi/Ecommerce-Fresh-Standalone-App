@@ -29,6 +29,9 @@ export class LoginComponent {
           if(response.message == "success"){
             this.errMsg = '';
             this.isLoading = false;
+
+            localStorage.setItem('token', response.token);
+            this._AuthService.decodeToken();
             this._Router.navigate(['/home']);
           }
         },
@@ -39,4 +42,6 @@ export class LoginComponent {
       })
     }
   }
+
+
 }
