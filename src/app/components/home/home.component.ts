@@ -5,10 +5,11 @@ import { Product } from '../../core/interfaces/product.js';
 import { CuttextPipe } from '../../core/pipes/cuttext.pipe.js';
 import { Category } from '../../core/interfaces/category.js';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [NgIf, NgFor, CurrencyPipe, CuttextPipe, SlicePipe, CarouselModule],
+  imports: [NgIf, NgFor, CurrencyPipe, CuttextPipe, SlicePipe, CarouselModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -32,7 +33,7 @@ export class HomeComponent implements OnInit {
     this._ProductService.getCategories().subscribe({
       next: (response) => {
         this.categories = response.data;
-         console.log(this.categories);
+        //  console.log(this.categories);
       },
       error: (err) => {
         console.log(err);
@@ -48,6 +49,9 @@ export class HomeComponent implements OnInit {
     dots: true,
     navSpeed: 700,
     navText: ['', ''],
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplaySpeed: 1000,
     responsive: {
       0: {
         items: 2
@@ -73,6 +77,9 @@ export class HomeComponent implements OnInit {
     dots: true,
     navSpeed: 700,
     navText: ['', ''],
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplaySpeed: 1000,
     items: 1,
     nav: false
   }

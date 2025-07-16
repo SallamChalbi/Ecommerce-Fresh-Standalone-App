@@ -4,4 +4,5 @@ export interface Product {
     imageCover: string,
     price: number,
     ratingsAverage: number,
+    _id?: string,
 }
