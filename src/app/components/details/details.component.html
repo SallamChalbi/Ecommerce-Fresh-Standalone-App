@@ -19,7 +19,7 @@
                     <span class="text-muted"><i class="fas fa-star rating-color"></i> {{ productDetails.ratingsAverage }} </span>
                 </div>
 
-                <button class="main-btn w-100">+Add To Cart</button>
+                <button (click)="addProduct(productId, btnAdd)" #btnAdd class="main-btn w-100">+Add To Cart</button>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ProductService } from '../../core/services/product.service.js';
 import { CurrencyPipe, NgFor, NgIf, SlicePipe } from '@angular/common';
 import { Product } from '../../core/interfaces/product.js';
@@ -18,7 +18,8 @@ import { ToastrService } from 'ngx-toastr';
 export class HomeComponent implements OnInit {
   constructor(private _ProductService:ProductService, 
     private _CartService:CartService,
-    private _ToastrService:ToastrService
+    private _ToastrService:ToastrService,
+    private _Renderer2:Renderer2
   ) { }
 
   products: Product[] = [];
@@ -46,14 +47,17 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  addProduct(productId: string): void {
+  addProduct(productId: string, element: HTMLButtonElement): void {
+    this._Renderer2.setProperty(element, 'disabled', true);
     this._CartService.addToCart(productId).subscribe({
       next: (response) => {
-        console.log('Product added to cart:', response);
+        // console.log('Product added to cart:', response);
         this._ToastrService.success(response.message)
+        this._Renderer2.removeAttribute(element, 'disabled');
       },
       error: (err) => {
         console.error('Error adding product to cart:', err);
+        this._Renderer2.removeAttribute(element, 'disabled');
       }
     })
   }
