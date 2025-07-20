@@ -6,6 +6,8 @@ import { CuttextPipe } from '../../core/pipes/cuttext.pipe.js';
 import { Category } from '../../core/interfaces/category.js';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { RouterLink } from '@angular/router';
+import { CartService } from '../../core/services/cart.service.js';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
-  constructor(private _ProductService:ProductService) { }
+  constructor(private _ProductService:ProductService, 
+    private _CartService:CartService,
+    private _ToastrService:ToastrService
+  ) { }
 
   products: Product[] = [];
   categories: Category[] = [];
@@ -40,6 +45,19 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
+  addProduct(productId: string): void {
+    this._CartService.addToCart(productId).subscribe({
+      next: (response) => {
+        console.log('Product added to cart:', response);
+        this._ToastrService.success(response.message)
+      },
+      error: (err) => {
+        console.error('Error adding product to cart:', err);
+      }
+    })
+  }
+
 
   categoriesOptions: OwlOptions = {
     loop: true,
