@@ -10,8 +10,10 @@ export const routes: Routes = [
             {path: 'cart', loadComponent: ()=> import('./components/cart/cart.component.js').then((m)=> m.CartComponent), title: 'Cart'},
             {path: 'products', loadComponent: ()=> import('./components/products/products.component.js').then((m)=> m.ProductsComponent), title: 'Products'},
             {path: 'details/:id', loadComponent: ()=> import('./components/details/details.component.js').then((m)=> m.DetailsComponent), title: 'Details'},
+            {path: 'payment/:id', loadComponent: ()=> import('./components/payment/payment.component.js').then((m)=> m.PaymentComponent), title: 'Payment'},
             {path: 'brands', loadComponent: ()=> import('./components/brands/brands.component.js').then((m)=> m.BrandsComponent), title: 'Brands'},
             {path: 'categories', loadComponent: ()=> import('./components/categories/categories.component.js').then((m)=> m.CategoriesComponent), title: 'Categories'},
+            {path: 'allorders', loadComponent: ()=> import('./components/allorders/allorders.component.js').then((m)=> m.AllordersComponent), title: 'All Orders'},
         ]
     },
     {

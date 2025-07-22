@@ -1,10 +1,11 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CartService } from '../../core/services/cart.service.js';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
-  imports: [NgFor, CurrencyPipe, NgIf],
+  imports: [NgFor, CurrencyPipe, NgIf, RouterLink],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
@@ -17,7 +18,7 @@ export class CartComponent implements OnInit {
     this._CartService.getCart().subscribe({
       next: (response) => {
         if(response.numOfCartItems >= 1){
-          console.log('Cart items:', response);
+          // console.log('Cart items:', response);
           this.cartItems = response;
         }
       },
@@ -29,7 +30,7 @@ export class CartComponent implements OnInit {
 
   removeItem(id: string, elemeent: HTMLButtonElement) {
     this._Renderer2.setAttribute(elemeent, 'disabled', 'true');
-    this._CartService.removveCartItem(id).subscribe({
+    this._CartService.removeCartItem(id).subscribe({
       next: (response)=>{
         // console.log('Item removed:', response);
         this.cartItems = response;

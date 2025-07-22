@@ -29,9 +29,11 @@
         </div>
     </div>
 
-    <!-- <div class="text-center">
-        <button class="btn btn-danger">Clear Cart</button>
-    </div> -->
+    <div class="text-center">
+        <button class="main-btn" [routerLink]="['/payment', cartItems.data._id]">
+            Online Payment <img src="./assets/images/64px-Visa_Inc._logo.svg.png" alt="visa card logo"/>
+        </button>
+    </div>
 </section>
 
 <ng-template #empty>
