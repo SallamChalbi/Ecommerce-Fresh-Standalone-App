@@ -40,4 +40,25 @@ export class CartComponent implements OnInit {
       }
     })
   }
+
+  updateQuantity(id: string, count: number, element1: HTMLButtonElement, element2: HTMLButtonElement) {
+    if (count >= 1) {
+      this._Renderer2.setAttribute(element1, 'disabled', 'true');
+      this._Renderer2.setAttribute(element2, 'disabled', 'true');
+      this._CartService.updateCartItemQuantity(id, count).subscribe({
+        next: (response) => {
+          // console.log('Quantity updated:', response);
+          this.cartItems = response;
+          this._Renderer2.removeAttribute(element1, 'disabled');
+          this._Renderer2.removeAttribute(element2, 'disabled');
+        },
+        error: (err) => {
+          console.error('Error updating quantity:', err);
+          this._Renderer2.removeAttribute(element1, 'disabled');
+          this._Renderer2.removeAttribute(element2, 'disabled');
+        }
+      });
+    }
+      
+  }
 }

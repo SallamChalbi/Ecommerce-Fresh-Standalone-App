@@ -21,9 +21,9 @@
                     </button>
                 </div>
                 <div>
-                    <button class="btn btn-md border-success">-</button>
+                    <button class="btn btn-md border-success" (click)="updateQuantity(item.product._id, item.count - 1, btn2, btn1)" #btn1>-</button>
                     <span class="mx-2"> {{item.count}} </span>
-                    <button class="btn btn-md border-success">+</button>
+                    <button class="btn btn-md border-success" (click)="updateQuantity(item.product._id, item.count + 1, btn2, btn1)" #btn2>+</button>
                 </div>
             </div>
         </div>
