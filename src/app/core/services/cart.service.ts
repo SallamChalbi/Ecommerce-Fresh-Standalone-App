@@ -29,4 +29,10 @@ export class CartService {
       headers: this.Token
     });
   }
+
+  removveCartItem(prodId: string): Observable<any> {
+    return this._HttpClient.delete(`${this.baseURL}/${prodId}`, {
+      headers: this.Token
+    });
+  }
 }

@@ -16,7 +16,7 @@
                 <div>
                     <h3 class="h6"> {{item.product.title}} </h3>
                     <span class="d-block"> {{item.price | currency : 'EGP '}} </span>
-                    <button class="btn btn-sm m-0 p-0 text-danger"> 
+                    <button (click)="removeItem(item.product._id, btnRemove)" #btnRemove class="btn btn-sm m-0 p-0 text-danger"> 
                         <i class="fa-solid fa-trash"></i> Remove
                     </button>
                 </div>
