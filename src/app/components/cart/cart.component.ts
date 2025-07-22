@@ -13,7 +13,6 @@ export class CartComponent implements OnInit {
 
   cartItems: any = null;
 
-
   ngOnInit() {
     this._CartService.getCart().subscribe({
       next: (response) => {
@@ -35,6 +34,8 @@ export class CartComponent implements OnInit {
         // console.log('Item removed:', response);
         this.cartItems = response;
         this._Renderer2.removeAttribute(elemeent, 'disabled');
+
+        this._CartService.numOfCartItems.next(response.numOfCartItems);
       },
       error: (err) => {
         console.error('Error removing item:', err);
@@ -68,8 +69,9 @@ export class CartComponent implements OnInit {
     this._CartService.clearCart().subscribe({
       next: (response) => {
         // console.log('Cart cleared:', response);
-        if (response.status === 'success') {
+        if (response.message === 'success') {
           this.cartItems = null; // Clear the cart items from the view
+          this._CartService.numOfCartItems.next(0); // Reset the number of cart items
         }
       },
       error: (err) => {

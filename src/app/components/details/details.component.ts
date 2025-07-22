@@ -48,6 +48,8 @@ export class DetailsComponent implements OnInit {
         // console.log(response);
         this._ToastrService.success(response.message);
         this._Renderer2.removeAttribute(element, 'disabled');
+
+        this._CartService.numOfCartItems.next(response.numOfCartItems);
       },
       error: (err) => {
         console.error('Error adding product to cart:', err);

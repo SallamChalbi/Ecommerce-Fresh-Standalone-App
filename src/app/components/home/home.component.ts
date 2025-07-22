@@ -54,6 +54,8 @@ export class HomeComponent implements OnInit {
         // console.log('Product added to cart:', response);
         this._ToastrService.success(response.message)
         this._Renderer2.removeAttribute(element, 'disabled');
+
+        this._CartService.numOfCartItems.next(response.numOfCartItems);
       },
       error: (err) => {
         console.error('Error adding product to cart:', err);
