@@ -17,8 +17,10 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this._CartService.getCart().subscribe({
       next: (response) => {
-        console.log('Cart items:', response);
-        this.cartItems = response;
+        if(response.numOfCartItems >= 1){
+          console.log('Cart items:', response);
+          this.cartItems = response;
+        }
       },
       error: (err) => {
         console.error('Error fetching cart items:', err);
@@ -60,5 +62,19 @@ export class CartComponent implements OnInit {
       });
     }
       
+  }
+
+  clearUserCart() {
+    this._CartService.clearCart().subscribe({
+      next: (response) => {
+        // console.log('Cart cleared:', response);
+        if (response.status === 'success') {
+          this.cartItems = null; // Clear the cart items from the view
+        }
+      },
+      error: (err) => {
+        console.error('Error clearing cart:', err);
+      }
+    })
   }
 }

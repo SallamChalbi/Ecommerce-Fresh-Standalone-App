@@ -1,7 +1,7 @@
 <section class="mb-4 w-75 mx-auto rounded shadow bg-main-light p-4" *ngIf="cartItems; else empty">
     <div class="d-flex justify-content-between my-2">
         <h1 class="h2">Cart Shop</h1>
-        <button class="main-btn">Check Out</button>
+        <button (click)="clearUserCart()" class="btn btn-sm btn-outline-danger">Clear Cart</button>
     </div>
     <div class="d-flex justify-content-between my-4">
         <h2 class="h5">total price: {{cartItems.data.totalCartPrice | currency : 'EGP '}} </h2>
@@ -21,13 +21,17 @@
                     </button>
                 </div>
                 <div>
-                    <button class="btn btn-md border-success" (click)="updateQuantity(item.product._id, item.count - 1, btn2, btn1)" #btn1>-</button>
+                    <button class="btn btn-sm border-success" (click)="updateQuantity(item.product._id, item.count - 1, btn2, btn1)" #btn1>-</button>
                     <span class="mx-2"> {{item.count}} </span>
-                    <button class="btn btn-md border-success" (click)="updateQuantity(item.product._id, item.count + 1, btn2, btn1)" #btn2>+</button>
+                    <button class="btn btn-sm border-success" (click)="updateQuantity(item.product._id, item.count + 1, btn2, btn1)" #btn2>+</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- <div class="text-center">
+        <button class="btn btn-danger">Clear Cart</button>
+    </div> -->
 </section>
 
 <ng-template #empty>

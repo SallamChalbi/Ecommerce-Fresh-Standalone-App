@@ -45,4 +45,10 @@ export class CartService {
         headers: this.Token
       });
   }
+
+  clearCart(): Observable<any> {
+    return this._HttpClient.delete(this.baseURL, {
+      headers: this.Token
+    });
+  }
 }
