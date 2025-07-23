@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { CartService } from '../../core/services/cart.service.js';
+import { CartService } from '../../core/services/cart.service';
 import { NgIf } from '@angular/common';
 import { response } from 'express';
 

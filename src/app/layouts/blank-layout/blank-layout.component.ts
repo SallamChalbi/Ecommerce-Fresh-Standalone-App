@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
-import { NavBlankComponent } from '../../components/nav-blank/nav-blank.component.js';
+import { NavBlankComponent } from '../../components/nav-blank/nav-blank.component';
 import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from '../../components/footer/footer.component.js';
+import { FooterComponent } from '../../components/footer/footer.component';
 import { NgStyle } from '@angular/common';
 
 @Component({

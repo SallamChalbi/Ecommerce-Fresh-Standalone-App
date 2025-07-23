@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { CartService } from '../../core/services/cart.service.js';
+import { CartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-payment',

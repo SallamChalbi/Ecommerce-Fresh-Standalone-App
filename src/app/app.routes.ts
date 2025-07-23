@@ -1,28 +1,28 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './core/guard/auth.guard.js';
+import { authGuard } from './core/guard/auth.guard';
 
 export const routes: Routes = [
     {
-        path: '', canActivate: [authGuard], loadComponent: ()=> import('./layouts/blank-layout/blank-layout.component.js').then((m)=> m.BlankLayoutComponent),
+        path: '', canActivate: [authGuard], loadComponent: ()=> import('./layouts/blank-layout/blank-layout.component').then((m)=> m.BlankLayoutComponent),
         children: [
             {path: '', redirectTo: 'home', pathMatch: 'full'},
-            {path: 'home', loadComponent: ()=> import('./components/home/home.component.js').then((m)=> m.HomeComponent), title: 'Home'},
-            {path: 'cart', loadComponent: ()=> import('./components/cart/cart.component.js').then((m)=> m.CartComponent), title: 'Cart'},
-            {path: 'products', loadComponent: ()=> import('./components/products/products.component.js').then((m)=> m.ProductsComponent), title: 'Products'},
-            {path: 'details/:id', loadComponent: ()=> import('./components/details/details.component.js').then((m)=> m.DetailsComponent), title: 'Details'},
-            {path: 'payment/:id', loadComponent: ()=> import('./components/payment/payment.component.js').then((m)=> m.PaymentComponent), title: 'Payment'},
-            {path: 'brands', loadComponent: ()=> import('./components/brands/brands.component.js').then((m)=> m.BrandsComponent), title: 'Brands'},
-            {path: 'categories', loadComponent: ()=> import('./components/categories/categories.component.js').then((m)=> m.CategoriesComponent), title: 'Categories'},
-            {path: 'allorders', loadComponent: ()=> import('./components/allorders/allorders.component.js').then((m)=> m.AllordersComponent), title: 'All Orders'},
+            {path: 'home', loadComponent: ()=> import('./components/home/home.component').then((m)=> m.HomeComponent), title: 'Home'},
+            {path: 'cart', loadComponent: ()=> import('./components/cart/cart.component').then((m)=> m.CartComponent), title: 'Cart'},
+            {path: 'products', loadComponent: ()=> import('./components/products/products.component').then((m)=> m.ProductsComponent), title: 'Products'},
+            {path: 'details/:id', loadComponent: ()=> import('./components/details/details.component').then((m)=> m.DetailsComponent), title: 'Details'},
+            {path: 'payment/:id', loadComponent: ()=> import('./components/payment/payment.component').then((m)=> m.PaymentComponent), title: 'Payment'},
+            {path: 'brands', loadComponent: ()=> import('./components/brands/brands.component').then((m)=> m.BrandsComponent), title: 'Brands'},
+            {path: 'categories', loadComponent: ()=> import('./components/categories/categories.component').then((m)=> m.CategoriesComponent), title: 'Categories'},
+            {path: 'allorders', loadComponent: ()=> import('./components/allorders/allorders.component').then((m)=> m.AllordersComponent), title: 'All Orders'},
         ]
     },
     {
-        path: '', loadComponent: ()=> import('./layouts/auth-layout/auth-layout.component.js').then((m)=> m.AuthLayoutComponent),
+        path: '', loadComponent: ()=> import('./layouts/auth-layout/auth-layout.component').then((m)=> m.AuthLayoutComponent),
         children: [
             {path: '', redirectTo: 'login', pathMatch: 'full'},
-            {path: 'login', loadComponent: ()=> import('./components/login/login.component.js').then((m)=> m.LoginComponent), title: 'Login'},
-            {path: 'register', loadComponent: ()=> import('./components/register/register.component.js').then((m)=> m.RegisterComponent), title: 'Register'},
+            {path: 'login', loadComponent: ()=> import('./components/login/login.component').then((m)=> m.LoginComponent), title: 'Login'},
+            {path: 'register', loadComponent: ()=> import('./components/register/register.component').then((m)=> m.RegisterComponent), title: 'Register'},
         ]
     },
-    {path: '**', loadComponent: ()=> import('./components/notfound/notfound.component.js').then((m)=> m.NotfoundComponent), title: 'Not Found :('}
+    {path: '**', loadComponent: ()=> import('./components/notfound/notfound.component').then((m)=> m.NotfoundComponent), title: 'Not Found :('}
 ];

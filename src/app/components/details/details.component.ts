@@ -1,9 +1,9 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../../core/services/product.service.js';
+import { ProductService } from '../../core/services/product.service';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
-import { CartService } from '../../core/services/cart.service.js';
+import { CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

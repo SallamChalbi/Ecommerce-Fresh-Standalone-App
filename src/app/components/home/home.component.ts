@@ -1,12 +1,12 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { ProductService } from '../../core/services/product.service.js';
+import { ProductService } from '../../core/services/product.service';
 import { CurrencyPipe, NgFor, NgIf, SlicePipe } from '@angular/common';
-import { Product } from '../../core/interfaces/product.js';
-import { CuttextPipe } from '../../core/pipes/cuttext.pipe.js';
-import { Category } from '../../core/interfaces/category.js';
+import { Product } from '../../core/interfaces/product';
+import { CuttextPipe } from '../../core/pipes/cuttext.pipe';
+import { Category } from '../../core/interfaces/category';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { RouterLink } from '@angular/router';
-import { CartService } from '../../core/services/cart.service.js';
+import { CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

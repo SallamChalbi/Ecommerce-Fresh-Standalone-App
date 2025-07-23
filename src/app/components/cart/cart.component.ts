@@ -1,5 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { CartService } from '../../core/services/cart.service.js';
+import { CartService } from '../../core/services/cart.service';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
