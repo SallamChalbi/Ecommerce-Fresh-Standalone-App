@@ -69,6 +69,23 @@ body{
     border-radius: 5px;
     padding: 4px;
     box-shadow: $shadow;
+    overflow: hidden;
+    transition: $main-transition;
+
+    .main-btn{
+        transform: translateY(150%);
+        opacity: 0;
+        transition: $main-transition ease-in-out;
+    }
+
+    &:hover{
+        transform: scale(1.04);
+
+        .main-btn{
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 }
 
 .active-link{
