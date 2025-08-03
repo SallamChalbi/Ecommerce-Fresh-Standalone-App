@@ -1,8 +1,7 @@
+import { NgIf } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CartService } from '../../core/services/cart.service';
-import { NgIf } from '@angular/common';
-import { response } from 'express';
 
 @Component({
   selector: 'app-nav-blank',

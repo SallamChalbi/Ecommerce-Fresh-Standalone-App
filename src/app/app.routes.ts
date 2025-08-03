@@ -22,6 +22,7 @@ export const routes: Routes = [
             {path: '', redirectTo: 'login', pathMatch: 'full'},
             {path: 'login', loadComponent: ()=> import('./components/login/login.component').then((m)=> m.LoginComponent), title: 'Login'},
             {path: 'register', loadComponent: ()=> import('./components/register/register.component').then((m)=> m.RegisterComponent), title: 'Register'},
+            {path: 'forgotPassword', loadComponent: ()=> import('./components/forgot-password/forgot-password.component').then((m)=> m.ForgotPasswordComponent), title: 'Forgot Password'},
         ]
     },
     {path: '**', loadComponent: ()=> import('./components/notfound/notfound.component').then((m)=> m.NotfoundComponent), title: 'Not Found :('}
