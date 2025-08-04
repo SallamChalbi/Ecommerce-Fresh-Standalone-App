@@ -22,4 +22,12 @@ export class ProductService {
   getCategories(): Observable<any> {
     return this._HttpClient.get(this.baseURL + 'categories');
   }
+
+  getCategoryDetails(id: string | null): Observable<any> {
+    return this._HttpClient.get(this.baseURL + `categories/${id}`);
+  }
+
+  getSubCategoriesOfCategory(categoryId: string | null): Observable<any> {
+    return this._HttpClient.get(this.baseURL + `categories/${categoryId}/subcategories`);
+  }
 }
