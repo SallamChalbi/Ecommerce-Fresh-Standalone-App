@@ -32,8 +32,9 @@
 
 <section *ngIf="products.length > 0" class="py-4">
     <h2>Popular Products</h2>
+    <input [(ngModel)]="term" type="text" class="form-control w-50 mx-auto form-control-sm my-3" placeholder="Search...">
     <div class="row g-4">
-        <div *ngFor="let product of products | slice : 0 : 18" class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+        <div *ngFor="let product of products | search : term.toLowerCase() | slice : 0 : 18" class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <div class="product h-100">
                 <header role="button" [routerLink]="['/details', product._id]">
                     <img [src]="product.imageCover" [alt]="product.title" [title]="product.title" class="w-100">

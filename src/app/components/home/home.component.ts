@@ -8,10 +8,12 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
+import { SearchPipe } from '../../core/pipes/search.pipe.js';
 
 @Component({
   selector: 'app-home',
-  imports: [NgIf, NgFor, CurrencyPipe, CuttextPipe, SlicePipe, CarouselModule, RouterLink],
+  imports: [NgIf, NgFor, CurrencyPipe, CuttextPipe, SlicePipe, CarouselModule, RouterLink, SearchPipe, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -22,6 +24,7 @@ export class HomeComponent implements OnInit {
     private _Renderer2:Renderer2
   ) { }
 
+  term:string = '';
   products: Product[] = [];
   categories: Category[] = [];
   
