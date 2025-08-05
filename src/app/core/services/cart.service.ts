@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class CartService {
   constructor(private _HttpClient:HttpClient) { }
 
   numOfCartItems: BehaviorSubject<number> = new BehaviorSubject(0);
+  userInfo: any;
 
   baseURL: string = 'https://ecommerce.routemisr.com/api/v1';
   
@@ -46,5 +48,19 @@ export class CartService {
         shippingAddress: userInfo
       }
   );
+  }
+
+  getAllOrders(): Observable<any> {
+    return this._HttpClient.get(this.baseURL + `/orders`);
+  }
+
+  decodeToken(): void{
+    const encode = localStorage.getItem('token');
+    
+    if(encode){
+      const decode = jwtDecode(encode);
+      this.userInfo = decode;
+      // console.log(this.userInfo);
+    }
   }
 }

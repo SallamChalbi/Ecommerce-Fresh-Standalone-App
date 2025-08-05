@@ -14,7 +14,7 @@
         <div class="col-md-11">
             <div class="d-flex align-items-center justify-content-between">
                 <div>
-                    <h3 class="h6"> {{item.product.title}} </h3>
+                    <h3 class="h6"> {{item.product.title | cuttext : 6}} </h3>
                     <span class="d-block"> {{item.price | currency : 'EGP '}} </span>
                     <button (click)="removeItem(item.product._id, btnRemove)" #btnRemove class="btn btn-sm m-0 p-0 text-danger"> 
                         <i class="fa-solid fa-trash"></i> Remove

@@ -30,4 +30,12 @@ export class ProductService {
   getSubCategoriesOfCategory(categoryId: string | null): Observable<any> {
     return this._HttpClient.get(this.baseURL + `categories/${categoryId}/subcategories`);
   }
+
+  getBrands(pageNum: number = 1): Observable<any> {
+    return this._HttpClient.get(this.baseURL + `brands?page=${pageNum}`);
+  }
+
+  getBrandDetails(id: string | null): Observable<any> {
+    return this._HttpClient.get(this.baseURL + `brands/${id}`);
+  }
 }

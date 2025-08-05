@@ -2,10 +2,11 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CartService } from '../../core/services/cart.service';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { CuttextPipe } from '../../core/pipes/cuttext.pipe.js';
 
 @Component({
   selector: 'app-cart',
-  imports: [NgFor, CurrencyPipe, NgIf, RouterLink],
+  imports: [NgFor, CurrencyPipe, NgIf, RouterLink, CuttextPipe],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })

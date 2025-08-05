@@ -1,1 +1,21 @@
-<p>allorders works!</p>
+<section *ngIf="userOrders.length > 0; else empty" class="w-75 mx-auto rounded  shadow my-3 p-3 bg-main-light">
+    <h2 class="text-center text-main">My Orders</h2>
+    <div *ngFor="let order of userOrders; index as i" class="row g-4 my-1 pb-4 border-bottom">
+        <div *ngFor="let item of order.cartItems" class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+            <div class="product h-100 position-relative">
+                <img *ngIf="i == 0" src="./assets/images/label.png" class="w-25 position-absolute top-0 start-0" alt="new">
+                <img [src]="item.product.imageCover" [alt]="item.product.title" [title]="item.product.title" class="w-100">
+                <h3 class="h6 text-main"> {{item.product.category.name}} </h3>
+                <h4 class="small"> {{item.product.title | cuttext : 2}} </h4>
+                <div class="d-flex justify-content-between align-items-center small">
+                    <span class="">{{item.price | currency : 'E£'}}</span>
+                    <span class="text-muted"> {{item.count}} </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #empty>
+    <h2 class="mb-4 w-75 mx-auto rounded shadow bg-main-light p-4 text-center">There is no order yet !</h2>
+</ng-template>

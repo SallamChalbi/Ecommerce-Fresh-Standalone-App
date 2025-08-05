@@ -4,10 +4,11 @@ import { WishlistService } from '../../core/services/wishlist.service.js';
 import { Product } from '../../core/interfaces/product.js';
 import { CartService } from '../../core/services/cart.service.js';
 import { ToastrService } from 'ngx-toastr';
+import { CuttextPipe } from '../../core/pipes/cuttext.pipe.js';
 
 @Component({
   selector: 'app-wishlist',
-  imports: [CommonModule],
+  imports: [CommonModule, CuttextPipe],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.scss'
 })
