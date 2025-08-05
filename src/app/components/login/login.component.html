@@ -23,7 +23,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <button [disabled]="loginForm.invalid" class="main-btn mt-2">Login <span *ngIf="isLoading"> <i class="fas fa-spin fa-spinner"></i> </span> </button>
 
-            <a routerLink="/forgotPassword" class="link-info">Forgot Password</a>
+            <a routerLink="/forgotPassword" class="link-info">Forgot Password?</a>
         </div>
     </form>
     <p *ngIf="errMsg" class="alert alert-danger w-50 mx-auto mb-0 text-center mt-2 p-1"> {{errMsg}} </p>

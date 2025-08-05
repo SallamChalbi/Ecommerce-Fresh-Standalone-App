@@ -43,7 +43,7 @@ export class CartService {
   }
 
   checkOut(cartId: string | null, userInfo: object): Observable<any> {
-    return this._HttpClient.post(this.baseURL + `/orders/checkout-session/${cartId}?url=http://localhost:4200`, 
+    return this._HttpClient.post(this.baseURL + `/orders/checkout-session/${cartId}?url=https://sallamchalbi-ecommerce-fresh-standa-gamma.vercel.app`, 
       {
         shippingAddress: userInfo
       }
