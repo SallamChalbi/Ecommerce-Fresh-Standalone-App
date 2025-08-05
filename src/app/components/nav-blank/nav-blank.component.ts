@@ -2,6 +2,7 @@ import { NgIf } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CartService } from '../../core/services/cart.service';
+import { WishlistService } from '../../core/services/wishlist.service.js';
 
 @Component({
   selector: 'app-nav-blank',
@@ -13,6 +14,7 @@ export class NavBlankComponent implements OnInit{
   constructor(
     private _Router: Router, 
     private _CartService:CartService,
+    private _WishlistService:WishlistService,
     private _Renderer2:Renderer2
   ) {}
 
@@ -31,6 +33,7 @@ export class NavBlankComponent implements OnInit{
   }
 
   cartNumber: number = 0;
+  wishlistNumber: number = 0;
 
   ngOnInit(): void {
     this._CartService.numOfCartItems.subscribe({
@@ -43,6 +46,16 @@ export class NavBlankComponent implements OnInit{
       }
     })
 
+    this._WishlistService.numOfWishlistItems.subscribe({
+      next: (data)=>{
+        // console.log('Number of wishlist items:', data);
+        this.wishlistNumber = data;
+      },
+      error: (err)=>{
+        console.error('Error fetching number of wishlist items:', err);
+      }
+    });
+
     this._CartService.getCart().subscribe({
       next: (response)=>{
         this.cartNumber = response.numOfCartItems;
@@ -51,6 +64,16 @@ export class NavBlankComponent implements OnInit{
         console.error('Error fetching cart items:', err);
       }
     })
+
+    this._WishlistService.getWishlist().subscribe({
+      next: (response)=>{
+        // console.log('Wishlist items:', response);
+        this.wishlistNumber = response.count;
+      },
+      error: (err)=>{
+        console.error('Error fetching wishlist items:', err);
+      }
+    });
   }
 
   signOut(): void {

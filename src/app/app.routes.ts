@@ -8,6 +8,7 @@ export const routes: Routes = [
             {path: '', redirectTo: 'home', pathMatch: 'full'},
             {path: 'home', loadComponent: ()=> import('./components/home/home.component').then((m)=> m.HomeComponent), title: 'Home'},
             {path: 'cart', loadComponent: ()=> import('./components/cart/cart.component').then((m)=> m.CartComponent), title: 'Cart'},
+            {path: 'wishlist', loadComponent: ()=> import('./components/wishlist/wishlist.component').then((m)=> m.WishlistComponent), title: 'Wishlist'},
             {path: 'products', loadComponent: ()=> import('./components/products/products.component').then((m)=> m.ProductsComponent), title: 'Products'},
             {path: 'productdetails/:id', loadComponent: ()=> import('./components/details/details.component').then((m)=> m.DetailsComponent), title: 'Product Details'},
             {path: 'payment/:id', loadComponent: ()=> import('./components/payment/payment.component').then((m)=> m.PaymentComponent), title: 'Payment'},

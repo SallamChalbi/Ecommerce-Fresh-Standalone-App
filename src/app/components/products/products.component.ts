@@ -1,11 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrService } from 'ngx-toastr';
+import { CuttextPipe } from '../../core/pipes/cuttext.pipe.js';
 import { CartService } from '../../core/services/cart.service.js';
 import { ProductService } from '../../core/services/product.service.js';
-import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { CuttextPipe } from '../../core/pipes/cuttext.pipe.js';
-import {NgxPaginationModule} from 'ngx-pagination'; 
+import { WishlistService } from '../../core/services/wishlist.service.js';
+import e from 'express';
+import { Product } from '../../core/interfaces/product.js';
 
 @Component({
   selector: 'app-products',
@@ -17,11 +20,13 @@ export class ProductsComponent implements OnInit{
   constructor(
     private _ProductService:ProductService, 
     private _CartService:CartService,
+    private _WishlistService:WishlistService,
     private _ToastrService:ToastrService,
     private _Renderer2:Renderer2
   ) { }
 
-  products: any[] = [];
+  products: Product[] = [];
+  wishlistData: string[] = [];
   pageSize: number = 10; // Number of products per page
   page: number = 1; // Current page number
   total: number = 0; // Total number of products
@@ -37,6 +42,17 @@ export class ProductsComponent implements OnInit{
       },
       error: (err) => {
         console.log(err);
+      }
+    });
+
+    this._WishlistService.getWishlist().subscribe({
+      next: (response) => {
+        // console.log('Wishlist items:', response);
+        this.wishlistData = response.data.map((item: any) => item._id);
+        // this._WishlistService.numOfWishlistItems.next(response.data.length);
+      },
+      error: (err) => {
+        console.error('Error fetching wishlist:', err);
       }
     });
   }
@@ -70,6 +86,34 @@ export class ProductsComponent implements OnInit{
       },
       error: (err) => {
         console.log(err);
+      }
+    });
+  }
+
+  addFav(productId: string | undefined): void{
+    this._WishlistService.addToWishlist(productId).subscribe({
+      next: (response) => {
+        // console.log('Product added to wishlist:', response);
+        this.wishlistData = response.data;
+        this._ToastrService.success(response.message);
+        this._WishlistService.numOfWishlistItems.next(response.data.length);
+      },
+      error: (err) => {
+        console.error('Error adding product to wishlist:', err);
+      }
+    });
+  }
+
+  removeFav(productId: string | undefined): void {
+    this._WishlistService.removeWishlistItem(productId).subscribe({
+      next: (response) => {
+        // console.log('Product removed from wishlist:', response);
+        this.wishlistData = response.data;
+        this._ToastrService.success(response.message);
+        this._WishlistService.numOfWishlistItems.next(response.data.length);
+      },
+      error: (err) => {
+        console.error('Error removing product from wishlist:', err);
       }
     });
   }
